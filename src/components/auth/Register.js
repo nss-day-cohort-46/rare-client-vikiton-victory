@@ -10,6 +10,7 @@ export const Register = (props) => {
     const password = useRef()
     const verifyPassword = useRef()
     const passwordDialog = useRef()
+    const profileImageUrl = useRef()
 
     const history = useHistory()
 
@@ -22,10 +23,12 @@ export const Register = (props) => {
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
                 "email": email.current.value,
-                "password": password.current.value
+                "password": password.current.value,
+                "bio":bio.current.value,
+                "profile_image_url": profileImageUrl.current.value
             }
 
-            return fetch("http://localhost:8088/register", {
+            return fetch("http://localhost:8000/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -33,7 +36,7 @@ export const Register = (props) => {
                 },
                 body: JSON.stringify(newUser)
             })
-                .then(res => res.json())
+                // .then(res => res.json())
                 .then(res => {
                     if ("valid" in res && res.valid) {
                         localStorage.setItem("rare_user_id", res.token)
@@ -62,6 +65,14 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="lastName"> Last Name </label>
                     <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="bio"> Bio </label>
+                    <input ref={bio} type="text" name="bio" className="form-control" placeholder="Bio" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="profileImageUrl"> Profile Image Url </label>
+                    <input ref={profileImageUrl} type="text" name="profileImageUrl" className="form-control" placeholder="Profile Image Url" required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputEmail"> Email address </label>
