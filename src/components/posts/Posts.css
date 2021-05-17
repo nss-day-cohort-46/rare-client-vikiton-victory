@@ -1,0 +1,45 @@
+.posts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 15px 0 15px 0;
+}
+
+.singlePost {
+    border: 1px solid black;
+    margin: 15px 10px 0 10px;
+    padding: 5px 0 20px 3px;
+    width: 200px;
+
+}
+
+.createPostButtonDiv {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 20px 0;
+}
+
+.button {
+    padding: 3px;
+    margin: 0 2px 0 2px;
+}
+
+.postFormSection {
+    margin: 0 0 0 15px;
+}
+
+.postDetail {
+    margin: 0 0 0 10px;
+}
+
+.postCategory {
+    margin: 0 0 20px 0;
+}
+
+.postTitle {
+    text-decoration: underline;
+}
+
+.commentButton {
+    margin: 4px 0 0 0;
+}

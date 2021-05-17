@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: rgb(242, 242, 242);
+    padding: 25px 0 18px 10px;
+    margin: 0 0 0 0;
+    border-bottom: 2px rgb(218, 218, 218) solid;
+}
+
+.navbar__item {
+    flex-basis: 15%;
+    list-style-type: none;
+}
+
+.navbar__logo {
+    max-height: 6rem;
+}
