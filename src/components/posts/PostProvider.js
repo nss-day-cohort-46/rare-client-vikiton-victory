@@ -7,18 +7,22 @@ export const PostProvider = (props) => {
     const [searchTerms, setSearchTerms] = useState("")
 
     const getPosts = () => {
-        return fetch("http://localhost:8088/posts")
+        return fetch("http://localhost:8000/posts", {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+            }
+        })
         .then(res => res.json())
         .then(setPosts)
     }
 
     const getPostById = (id) => {
-        return fetch(`http://localhost:8088/posts/${id}`)
+        return fetch(`http://localhost:8000/posts/${id}`)
             .then(res => res.json())
     }
 
     const addPost = postObj => {
-        return fetch("http://localhost:8088/posts", {
+        return fetch("http://localhost:8000/posts", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -29,7 +33,7 @@ export const PostProvider = (props) => {
     }
 
     const updatePost = post => {
-        return fetch(`http://localhost:8088/posts/${post.id}`, {
+        return fetch(`http://localhost:8000/posts/${post.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -40,7 +44,7 @@ export const PostProvider = (props) => {
     }
 
     const deletePost = (postId) => {
-        return fetch(`http://localhost:8088/posts/${postId}`, {
+        return fetch(`http://localhost:8000/posts/${postId}`, {
             method: "DELETE"
         })
             .then(getPosts)
