@@ -5,9 +5,7 @@ export const CategoryContext = createContext()
 
 // This component establishes what data can be used.
 export const CategoryProvider = (props) => {
-    const [categories, setCategories] = useState([{
-        label: "Javascript"
-    }])
+    const [categories, setCategories] = useState([])
 
     const getCategories = () => {
         return fetch("http://localhost:8000/categories", {
@@ -15,8 +13,8 @@ export const CategoryProvider = (props) => {
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`
             }
         })
-        // .then(res => res.json())
-        // .then(setCategories)
+        .then(res => res.json())
+        .then(setCategories)
     }
 
     const addCategory = categoryObj => {
