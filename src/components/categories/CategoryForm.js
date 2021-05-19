@@ -104,7 +104,8 @@ export const CategoryForm = () => {
           event.preventDefault() // Prevent browser from submitting the form and refreshing the page
           handleSaveCategory()
         }}>
-        {categoryId ? "Save" : "Add Category"}</button>
+        {categoryId ? "Save" : "Add Category"}
+        </button>
            
     </form>
   )
