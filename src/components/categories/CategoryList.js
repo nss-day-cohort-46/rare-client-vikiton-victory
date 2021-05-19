@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom"
 
 export const CategoryList = () => {
   
-  const { categories, getCategories } = useContext(CategoryContext)
+  const { categories, getCategories, deleteCategory } = useContext(CategoryContext)
   //  // The useHistory hook tells React which route to visit. Tells React to render the category form component.
   const history = useHistory()
 
@@ -38,6 +38,20 @@ export const CategoryList = () => {
             <div className="category__label">
               Name of the category: {category.label}
             </div>
+            <button
+        onClick={() => {
+          history.push(`/categories/edit/${category.id}`);
+        }}
+      >
+        Edit
+      </button>
+      <button
+        onClick={() =>
+          deleteCategory(category.id).then(() => history.push("/categories"))
+        }
+      >
+        Delete category
+      </button>
           </section>
           </div>
         );

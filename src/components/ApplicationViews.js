@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import { CategoryProvider } from "./categories/CategoryProvider";
 import { CategoryList } from "./categories/CategoryList";
 import { CategoryForm } from "./categories/CategoryForm";
+import { CategoryDetails } from "./categories/CategoryDetails"
 import { PostProvider } from "./posts/PostProvider";
 import { TagProvider } from "./tags/TagsProvider";
 import { TagList } from "./tags/TagList";
@@ -47,10 +48,14 @@ export const ApplicationViews = () => {
 
       {/* Category Area    */}
       <CategoryProvider>
+          
         <Route exact path="/categories">
           <CategoryList />
         </Route>
-
+        <Route
+          path="/categories/:categoryId(\d+)"
+          render={(props) => <CategoryDetails {...props} />}
+        />
         <Route
           exact
           path="/categories/new"
@@ -58,10 +63,10 @@ export const ApplicationViews = () => {
             return <CategoryForm {...props} />;
           }}
         />
-
-        <Route exact path="/categories/edit/:categoryId(\d+)">
-          <CategoryForm />
-        </Route>
+        <Route
+          path="/categories/edit/:categoryId(\d+)"
+          render={(props) => <CategoryForm {...props} />}
+        />
       </CategoryProvider>
 
       {/* Post Area    */}
