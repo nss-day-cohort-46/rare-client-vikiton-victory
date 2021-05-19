@@ -8,15 +8,21 @@ export const CategoryProvider = (props) => {
     const [categories, setCategories] = useState([])
 
     const getCategories = () => {
-        return fetch("http://localhost:8088/categories")
+        debugger
+        return fetch("http://localhost:8000/categories", {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
+            }
+        })
         .then(res => res.json())
         .then(setCategories)
     }
 
     const addCategory = categoryObj => {
-        return fetch("http://localhost:8088/categories", {
+        return fetch("http://localhost:8000/categories", {
             method: "POST",
             headers: {
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(categoryObj)
@@ -25,22 +31,30 @@ export const CategoryProvider = (props) => {
     }
 
     const getCategoryById = (id) => {
-        return fetch(`http://localhost:8088/categories/${id}`)
+        return fetch(`http://localhost:8000/categories/${id}`, {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
+            }
+        })
             .then(res => res.json())
     }
 
 
     const deleteCategory = categoryId => {
-        return fetch(`http://localhost:8088/categories/${categoryId}`,{
-            method: "DELETE"
+        return fetch(`http://localhost:8000/categories/${categoryId}`,{
+            method: "DELETE",
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
+            }
         })
             .then(getCategories)
     }
 
     const updateCategory = category => {
-        return fetch(`http://localhost:8088/categories/${category.id}`, {
+        return fetch(`http://localhost:8000/categories/${category.id}`, {
           method: "PUT",
           headers: {
+            "Authorization": `Token ${localStorage.getItem("rare_user_id")}`,
             "Content-Type": "application/json"
           },
           body: JSON.stringify(category)
