@@ -5,6 +5,7 @@ export const PostContext = React.createContext()
 export const PostProvider = (props) => {
     const [posts, setPosts] = useState([])
     const [searchTerms, setSearchTerms] = useState("")
+    
 
     const getPosts = () => {
         return fetch("http://localhost:8000/posts", {
