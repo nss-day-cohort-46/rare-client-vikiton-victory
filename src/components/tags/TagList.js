@@ -5,7 +5,7 @@ import Tag from "./Tag"
 import "./Tag.css"
 
 export const TagList = () => {
-    const { getTags, tags, searchTerms } = useContext(TagContext)
+    const { getTags, tags} = useContext(TagContext)
 
     const [ filteredTags, setFilteredTags] = useState([])
 
