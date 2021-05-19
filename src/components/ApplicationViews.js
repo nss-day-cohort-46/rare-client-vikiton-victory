@@ -39,7 +39,7 @@ export const ApplicationViews = () => {
           <Route exact path="/comments/create">
             <CommentForm />
           </Route>
-          <Route path="/comments/edit/:commentId(\d+)">
+          <Route path="/posts/:postId(\d+)/createcomment">
             <CommentForm />
           </Route>
           <Route path="/comments/details/${comment.id}">
