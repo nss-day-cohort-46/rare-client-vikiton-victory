@@ -8,7 +8,6 @@ export const CategoryProvider = (props) => {
     const [categories, setCategories] = useState([])
 
     const getCategories = () => {
-        debugger
         return fetch("http://localhost:8000/categories", {
             headers:{
                 "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
