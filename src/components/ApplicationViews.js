@@ -14,6 +14,8 @@ import { CommentProvider } from "./comments/CommentProvider";
 import { CommentList } from "./comments/CommentList";
 import { CommentForm } from "./comments/CommentForm";
 import { CommentDetail } from "./comments/CommentDetail";
+import {ProfileList} from "./profiles/ProfileList"
+import {ProfileProvider} from "./profiles/ProfileProvider"
 
 // import { CommentForm } from "./comments/CommentForm"
 
@@ -106,6 +108,16 @@ export const ApplicationViews = () => {
           <TagForm />
         </Route>
       </TagProvider>
+
+
+
+
+    <ProfileProvider>
+      <Route exact path="/profiles">
+        <ProfileList/>
+      </Route>
+    </ProfileProvider>
     </>
   );
 };
+

@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 
 export const ProfileContext = React.createContext()
-export const ProfileProvider = () =>{
+export const ProfileProvider = (props) =>{
     const [profiles, setProfiles] = useState([])
 
     const getProfiles = () => {
@@ -13,5 +13,11 @@ export const ProfileProvider = () =>{
           .then(response => response.json())
           .then(setProfiles)
     }
-    
+    return (
+      <ProfileContext.Provider value={{
+          profiles, getProfiles
+      }}>
+          {props.children}
+      </ProfileContext.Provider>
+  )
 }

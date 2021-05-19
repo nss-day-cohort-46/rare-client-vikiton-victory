@@ -1,23 +1,33 @@
 import React, { useEffect, useContext } from "react"
-import { EventContext } from "../event/EventProvider.js"
 import { HumanDate } from "../utils/HumanDate.js"
 import { ProfileContext } from "../auth/AuthProvider.js"
 import "./Profile.css"
 
 
-export const Profile = (props) => {
-    const { profile, getProfile } = useContext(ProfileContext)
-    const { leaveEvent } = useContext(EventContext)
+export default ({ profile }) => {
 
-    useEffect(() => {
-        getProfile()
-    }, [])
+
+
 
     return (
         <div className="profile">
-            <h3 className="userName">
-                
+            <h3 className="fullName">
+                {profile.user.first_name}{profile.user.last_name}
             </h3>
+            <h4 className="displayName">
+                {profile.user.username}
+            </h4>
+            <div className="email">
+                {profile.user.email}
+            </div>
+            <div className="creationDate">
+                {profile.created_on}
+            </div>
+            <div className="profileType">
+                {
+                    profile.user.is_staff === true ? "admin":"pleb"
+                }
+            </div>
         </div>
     )
 }
