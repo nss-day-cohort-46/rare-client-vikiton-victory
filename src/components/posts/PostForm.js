@@ -12,7 +12,7 @@ export const PostForm = () => {
 
     const [ post, setPost ] = useState({
         user_id: parseInt(currentUser),
-        category_id: 0,
+        category: 0,
         title: "",
         image_url: "",
         content: "",
@@ -36,15 +36,16 @@ export const PostForm = () => {
 
 
     const  handleSavePost = () => {
-        if (post.title === "" && post.title === "" ) {
+        if (post.title === "" && post.content === "" ) {
             window.alert("Please complete all fields")
         } else {
             setIsLoading(true)
             if (postId) {
+                // debugger
                 updatePost({
-                    id: post.id,
+                    id: parseInt(postId),
                     user_id: post.user_id,
-                    category_id: parseInt(post.category_id),
+                    category: parseInt(post.category),
                     title: post.title,
                     image_url: post.image_url,
                     content: post.content,
@@ -52,14 +53,14 @@ export const PostForm = () => {
                 })
                     .then(() => history.push(`/posts/detail/${post.id}`))
             } else {
-                addPost({
-                    user_id: post.user_id,
-                    category_id: parseInt(post.category_id),
-                    title: post.title,
-                    image_url: post.image_url,
-                    content: post.content,
-                    approved: post.approved
-                })
+                    addPost({
+                        user_id: post.user_id,
+                        category: parseInt(post.category),
+                        title: post.title,
+                        image_url: post.image_url,
+                        content: post.content,
+                        approved: post.approved
+                    })
                     .then(() => history.push("/posts"))
             }
         }
@@ -101,16 +102,17 @@ export const PostForm = () => {
                 </fieldset>
                 <fieldset>
                     <div>
-                        <label htmlFor="category_id"></label>
-                        <select value={post.category_id} id="category_id"
+                        <label htmlFor="category"></label>
+                        <select value={post.category.id} id="category"
                             placeholder="Select a Category"
                             className="formControl"
                             onChange={handleControlledInputChange}>
                             <option value="0">Select a category</option>
-                            {categories.map(cat => (
-                            <option key={cat.id} value={cat.id}>
-                            {cat.label}
-                            </option>
+                            {
+                                categories.map(cat => (
+                                    <option key={cat.id} value={cat.id}>
+                                        {cat.label}
+                                    </option>
                             ))}
                         </select>
                     </div>
