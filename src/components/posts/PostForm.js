@@ -14,7 +14,7 @@ export const PostForm = () => {
         user_id: parseInt(currentUser),
         category_id: 0,
         title: "",
-        publication_date: new Date().toISOString(),
+        image_url: "",
         content: "",
         approved: true
     })
@@ -46,7 +46,7 @@ export const PostForm = () => {
                     user_id: post.user_id,
                     category_id: parseInt(post.category_id),
                     title: post.title,
-                    publication_date: post.publication_date,
+                    image_url: post.image_url,
                     content: post.content,
                     approved: post.approved
                 })
@@ -56,7 +56,7 @@ export const PostForm = () => {
                     user_id: post.user_id,
                     category_id: parseInt(post.category_id),
                     title: post.title,
-                    publication_date: post.publication_date,
+                    image_url: post.image_url,
                     content: post.content,
                     approved: post.approved
                 })
@@ -114,6 +114,14 @@ export const PostForm = () => {
                             ))}
                         </select>
                     </div>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="image_url">Image Link: </label>
+                    <input type="text" id="image_url" required autoFocus
+                        placeholder="Image URL"
+                        defaultValue={post.image_url}
+                        onChange={handleControlledInputChange}
+                        ></input>
                 </fieldset>
                 <button disabled={isLoading}
                         className="button savePostButton"
