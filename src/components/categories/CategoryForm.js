@@ -101,10 +101,12 @@ export const CategoryForm = () => {
       <button className="button save_new_cat_button"
         disabled={isLoading}
         onClick={event => {
+          debugger
           event.preventDefault() // Prevent browser from submitting the form and refreshing the page
           handleSaveCategory()
         }}>
-        {categoryId ? "Save" : "Add Category"}</button>
+        {categoryId ? "Save" : "Add Category"}
+        </button>
            
     </form>
   )
