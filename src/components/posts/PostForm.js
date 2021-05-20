@@ -41,7 +41,6 @@ export const PostForm = () => {
         } else {
             setIsLoading(true)
             if (postId) {
-                // debugger
                 updatePost({
                     id: parseInt(postId),
                     user_id: post.user_id,
@@ -72,7 +71,15 @@ export const PostForm = () => {
             if (postId) {
                 getPostById(postId)
                 .then(post => {
-                    setPost(post)
+                    setPost({
+                        id: post.id,
+                        user_id: post.user_id,
+                        category: parseInt(post.category.id),
+                        title: post.title,
+                        image_url: post.image_url,
+                        content: post.content,
+                        approved: post.approved
+                    })
                     setIsLoading(false)
                 })
             } else {
@@ -103,7 +110,7 @@ export const PostForm = () => {
                 <fieldset>
                     <div>
                         <label htmlFor="category"></label>
-                        <select value={post.category.id} id="category"
+                        <select value={post.category} id="category"
                             placeholder="Select a Category"
                             className="formControl"
                             onChange={handleControlledInputChange}>

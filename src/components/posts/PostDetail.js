@@ -30,6 +30,9 @@ export const PostDetail = () => {
     return (
         <section className="postDetail">
                 <h3 className="postTitle">{post.title}</h3>
+                <div className="postImageDetailDiv">
+                    <img className="postImage" src={post.image_url} alt="postImage"></img>
+                </div>
                 <div className="postPublication_date">Date Published: {post.publication_date}</div>
                 <div className="postContent">Content: {post.content}</div>
                 <div className="postAuthor">Author: {post.user?.first_name} {post.user?.last_name}</div>
