@@ -1,11 +1,20 @@
-import React from "react"
+import React, {useEffect, useContext} from "react"
 import { Link, useHistory } from "react-router-dom"
+import {ProfileContext} from "../profiles/ProfileProvider"
 import "./NavBar.css"
 import Logo from "./rare.jpeg"
 
 export const NavBar = () => {
     const history = useHistory()
+    const {getProfiles, profiles} = useContext(ProfileContext)
 
+    useEffect(() =>{
+        getProfiles()
+        .then()
+    }, [])
+
+    const isAdmin = JSON.parse(localStorage.getItem("admin"))
+    console.log(isAdmin)
     return (
         <ul className="navbar">
             <li className="navbar__item">
@@ -23,9 +32,11 @@ export const NavBar = () => {
             <li className="navbar__item">
                 <Link className="nav-link" to="/posts">My Posts</Link>
             </li>
+            
+            {!!isAdmin ? 
             <li className="navbar__item">
                 <Link className="nav-link" to="/profiles">User Management</Link>
-            </li>
+            </li> : ""}
 
             {
                 (localStorage.getItem("rare_user_id") !== null) ?
