@@ -15,7 +15,7 @@ export const ProfileList = () => {
     }, [])
 
 
-
+    console.log(profiles)
 
 
     return (
