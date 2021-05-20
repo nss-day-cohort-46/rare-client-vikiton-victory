@@ -13,7 +13,7 @@ export const NavBar = () => {
         .then()
     }, [])
 
-    const isAdmin = localStorage.getItem("admin")
+    const isAdmin = JSON.parse(localStorage.getItem("admin"))
     console.log(isAdmin)
     return (
         <ul className="navbar">
