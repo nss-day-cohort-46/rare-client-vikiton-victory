@@ -93,7 +93,7 @@ export const ApplicationViews = () => {
             </Route>
 
             <Route exact path="/posts/:postId(\d+)/createcomment">
-              {/* <CommentForm /> */}
+              <CommentForm />
             </Route>
           </TagProvider>
         </CategoryProvider>
