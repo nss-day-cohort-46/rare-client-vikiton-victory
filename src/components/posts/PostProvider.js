@@ -5,6 +5,7 @@ export const PostContext = React.createContext()
 export const PostProvider = (props) => {
     const [posts, setPosts] = useState([])
     const [searchTerms, setSearchTerms] = useState("")
+    
 
     const getPosts = () => {
         return fetch("http://localhost:8000/posts", {
@@ -29,7 +30,8 @@ export const PostProvider = (props) => {
         return fetch("http://localhost:8000/posts", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
             },
             body: JSON.stringify(postObj)
         })
