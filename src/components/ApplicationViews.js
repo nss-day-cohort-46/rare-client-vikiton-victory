@@ -91,7 +91,6 @@ export const ApplicationViews = () => {
             <Route exact path="/posts/detail/:postId(\d+)">
               <PostDetail />
             </Route>
-
           </TagProvider>
         </CategoryProvider>
       </PostProvider>

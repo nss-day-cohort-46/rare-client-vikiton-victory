@@ -4,6 +4,9 @@ import { Link } from "react-router-dom"
 
 export const Post = ({ post }) => (
     <section className="singlePost">
+        <div className="postImageDiv">
+            <img className="postImage" src={post.image_url} alt="postImage"></img>
+        </div>
         <h3 className="post__title">
             <Link to={`/posts/detail/${post.id}`}>
                 {post.title}

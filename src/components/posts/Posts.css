@@ -16,6 +16,18 @@
     border: 1px solid black;
 }
 
+.postImage {
+    width: 150px;
+    border-radius: 20px;
+    margin: 12px 0 5px 0;
+    box-shadow: 2px 3px rgba(0, 0, 0, 0.776);
+}
+
+.postImageDiv {
+    display: flex;
+    justify-content: center;
+}
+
 .createPostButtonDiv {
     display: flex;
     justify-content: center;

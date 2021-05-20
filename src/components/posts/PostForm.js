@@ -12,9 +12,9 @@ export const PostForm = () => {
 
     const [ post, setPost ] = useState({
         user_id: parseInt(currentUser),
-        category_id: 0,
+        category: 0,
         title: "",
-        publication_date: new Date().toISOString(),
+        image_url: "",
         content: "",
         approved: true
     })
@@ -36,30 +36,30 @@ export const PostForm = () => {
 
 
     const  handleSavePost = () => {
-        if (post.title === "" && post.title === "" ) {
+        if (post.title === "" && post.content === "" ) {
             window.alert("Please complete all fields")
         } else {
             setIsLoading(true)
             if (postId) {
                 updatePost({
-                    id: post.id,
+                    id: parseInt(postId),
                     user_id: post.user_id,
-                    category_id: parseInt(post.category_id),
+                    category: parseInt(post.category),
                     title: post.title,
-                    publication_date: post.publication_date,
+                    image_url: post.image_url,
                     content: post.content,
                     approved: post.approved
                 })
                     .then(() => history.push(`/posts/detail/${post.id}`))
             } else {
-                addPost({
-                    user_id: post.user_id,
-                    category_id: parseInt(post.category_id),
-                    title: post.title,
-                    publication_date: post.publication_date,
-                    content: post.content,
-                    approved: post.approved
-                })
+                    addPost({
+                        user_id: post.user_id,
+                        category: parseInt(post.category),
+                        title: post.title,
+                        image_url: post.image_url,
+                        content: post.content,
+                        approved: post.approved
+                    })
                     .then(() => history.push("/posts"))
             }
         }
@@ -71,7 +71,15 @@ export const PostForm = () => {
             if (postId) {
                 getPostById(postId)
                 .then(post => {
-                    setPost(post)
+                    setPost({
+                        id: post.id,
+                        user_id: post.user_id,
+                        category: parseInt(post.category.id),
+                        title: post.title,
+                        image_url: post.image_url,
+                        content: post.content,
+                        approved: post.approved
+                    })
                     setIsLoading(false)
                 })
             } else {
@@ -101,19 +109,28 @@ export const PostForm = () => {
                 </fieldset>
                 <fieldset>
                     <div>
-                        <label htmlFor="category_id"></label>
-                        <select value={post.category_id} id="category_id"
+                        <label htmlFor="category"></label>
+                        <select value={post.category} id="category"
                             placeholder="Select a Category"
                             className="formControl"
                             onChange={handleControlledInputChange}>
                             <option value="0">Select a category</option>
-                            {categories.map(cat => (
-                            <option key={cat.id} value={cat.id}>
-                            {cat.label}
-                            </option>
+                            {
+                                categories.map(cat => (
+                                    <option key={cat.id} value={cat.id}>
+                                        {cat.label}
+                                    </option>
                             ))}
                         </select>
                     </div>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="image_url">Image Link: </label>
+                    <input type="text" id="image_url" required autoFocus
+                        placeholder="Image URL"
+                        defaultValue={post.image_url}
+                        onChange={handleControlledInputChange}
+                        ></input>
                 </fieldset>
                 <button disabled={isLoading}
                         className="button savePostButton"

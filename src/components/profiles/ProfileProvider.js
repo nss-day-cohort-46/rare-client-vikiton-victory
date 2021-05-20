@@ -7,15 +7,24 @@ export const ProfileProvider = (props) =>{
     const getProfiles = () => {
       return fetch("http://localhost:8000/profiles", {
           headers:{
-              "Authorization": `Token ${localStorage.getItem("lu_token")}`
+              "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
           }
       })
           .then(response => response.json())
           .then(setProfiles)
     }
+
+    const getProfileById = (profileId) => {
+      return fetch(`http://localhost:8000/profiles/${profileId}`, {
+          headers:{
+              "Authorization": `Token ${localStorage.getItem("rare_user_id")}`
+          }
+      })
+      .then(res => res.json())
+  }
     return (
       <ProfileContext.Provider value={{
-          profiles, getProfiles
+          profiles, getProfiles, getProfileById
       }}>
           {props.children}
       </ProfileContext.Provider>
