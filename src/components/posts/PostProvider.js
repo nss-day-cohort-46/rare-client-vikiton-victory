@@ -49,6 +49,18 @@ export const PostProvider = (props) => {
         })
             .then(getPosts)
     }
+    
+    const updatePostTags = (post, tag) => {
+        return fetch(`http://localhost:8000/posts/${post.id}/update_tag`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("rare_user_id")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({tag})
+        })
+            .then(getPosts)
+    }
 
     const deletePost = (postId) => {
         return fetch(`http://localhost:8000/posts/${postId}`, {
@@ -64,7 +76,7 @@ export const PostProvider = (props) => {
     return (
         <PostContext.Provider value={{
             posts, addPost, getPosts, getPostById,
-            searchTerms, setSearchTerms, deletePost, updatePost
+            searchTerms, setSearchTerms, deletePost, updatePost, updatePostTags
         }}>
             {props.children}
         </PostContext.Provider>

@@ -7,7 +7,7 @@ import { TagContext } from "../tags/TagsProvider"
 export const PostDetail = () => {
 
     const { deletePost, getPostById } = useContext(PostContext)
-    const { tags, getTags } = useContext(TagContext)
+    const { tags } = useContext(TagContext)
 
     const [post, setPost] = useState({})
 
@@ -27,7 +27,6 @@ export const PostDetail = () => {
             .then((res) => {
                 setPost(res)
             })
-                .then(getTags)
     }, [])
     
     return (
@@ -40,6 +39,11 @@ export const PostDetail = () => {
                 <div className="postContent">Content: {post.content}</div>
                 <div className="postAuthor">Author: {post.user?.first_name} {post.user?.last_name}</div>
                 <div className="postCategory">Category: {post.category?.label}</div>
+                {
+                    post.tags?.map(tag => {
+                        return <div>Tags: {tag.label}</div>
+                    })
+                }
             <div className="postDetailButtonDiv">
                 <button className="button" onClick={() => {
                     history.push(`/posts/edit/${post.id}`)
@@ -50,22 +54,6 @@ export const PostDetail = () => {
             <div className="commentButtonDiv">
                 <button className="button commentButton" onClick={() => history.push(`/posts/${post.id}/createcomment`)}>Comment</button>
                 <button className="button" onClick={() => history.push(`/tags/${post.id}`)}>Tag Management</button>
-                {/* <fieldset>
-                    <div>
-                        <label htmlFor="tag"></label>
-                        <select id="tag"
-                            placeholder="Select a Tag"
-                            className="formControl">
-                            <option value="0">Select a Tag</option>
-                            {
-                                tags.map(tag => (
-                                    <option key={tag.id} value={tag.id}>
-                                        {tag.label}
-                                    </option>
-                            ))}
-                        </select>
-                    </div>
-                </fieldset> */}
             </div>
         </section>
     )
