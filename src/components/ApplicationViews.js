@@ -103,15 +103,17 @@ export const ApplicationViews = () => {
 
       {/* Tag Area    */}
       <TagProvider>
-        <Route exact path="/tags">
-          <TagList />
-        </Route>
-        <Route exact path="/tags/edit/:tagId(\d+)">
-          <TagForm />
-        </Route>
-        <Route exact path="/tags/create">
-          <TagForm />
-        </Route>
+        <PostProvider>
+          <Route exact path="/tags/:postId(\d+)">
+            <TagList />
+          </Route>
+          <Route exact path="/tags/edit/:tagId(\d+)">
+            <TagForm />
+          </Route>
+          <Route exact path="/tags/create">
+            <TagForm />
+          </Route>
+        </PostProvider>
       </TagProvider>
 
 
