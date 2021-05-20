@@ -18,8 +18,6 @@ import { CommentDetail } from "./comments/CommentDetail";
 import {ProfileList} from "./profiles/ProfileList"
 import {ProfileProvider} from "./profiles/ProfileProvider"
 
-// import { CommentForm } from "./comments/CommentForm"
-
 export const ApplicationViews = () => {
   return (
     <>
@@ -36,15 +34,17 @@ export const ApplicationViews = () => {
           <Route exact path="/comments">
             <CommentList />
           </Route>
-          <Route exact path="/comments/create">
+
+          <Route exact path="/posts/:postId(\d+)/createcomment">
             <CommentForm />
           </Route>
+          
           <Route path="/comments/edit/:commentId(\d+)">
             <CommentForm />
           </Route>
-          <Route path="/comments/details/${comment.id}">
+          {/* <Route path="/comments/details/${comment.id}">
             <CommentDetail />
-          </Route>
+          </Route> */}
         </PostProvider>
       </CommentProvider>
 
@@ -92,14 +92,9 @@ export const ApplicationViews = () => {
               <PostDetail />
             </Route>
 
-            <Route exact path="/posts/:postId(\d+)/createcomment">
-              {/* <CommentForm /> */}
-            </Route>
           </TagProvider>
         </CategoryProvider>
       </PostProvider>
-
-      {/* Comment Area */}
 
       {/* Tag Area    */}
       <TagProvider>
@@ -113,9 +108,6 @@ export const ApplicationViews = () => {
           <TagForm />
         </Route>
       </TagProvider>
-
-
-
 
     <ProfileProvider>
       <Route exact path="/profiles">
