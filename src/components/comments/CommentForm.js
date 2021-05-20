@@ -25,7 +25,7 @@ export const CommentForm = () => {
         setComment(newComment)
     }
 
-    const handleSaveComment = () => {
+    const handleSaveComment = (postId) => {
             setIsLoading();
 
             if (commentId) {
@@ -35,10 +35,10 @@ export const CommentForm = () => {
                     post_id: comment.post_id,
                     author_id: localStorage.getItem("rare_user_id")
                 })
-                    .then(() => history.push("/comments"))
+                    .then(() => history.push(`/posts/detail/${postId}`))
             } else {
                 addComment(comment)
-                    .then(() => history.push("/comments"))
+                    .then(() => history.push(`/posts/detail/${postId}`))
             }
         }
 
@@ -67,7 +67,7 @@ export const CommentForm = () => {
             <button className="btn btn-primary"
                 onClick={event => {
                     event.preventDefault()
-                    handleSaveComment()
+                    handleSaveComment(comment.post_id)
                 }}>
                     {commentId ? "Save Comment" : "Add Comment"}
             </button>

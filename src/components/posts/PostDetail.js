@@ -34,6 +34,20 @@ export const PostDetail = () => {
                 <div className="postContent">Content: {post.content}</div>
                 <div className="postAuthor">Author: {post.user?.first_name} {post.user?.last_name}</div>
                 <div className="postCategory">Category: {post.category?.label}</div>
+                <div className="post__comment">
+            {post.comment_set?.map((comment) => {
+                return (
+                    <div className="individual comment">
+                        <section key={`comment--${comment.id}`} className="comment">
+                            <div className="comment__content">
+                                Comment: {comment.content}
+                            </div>
+                        </section>
+                    </div>
+                )
+            })
+            }
+        </div>
             <div className="postDetailButtonDiv">
                 <button className="button" onClick={() => {
                     history.push(`/posts/edit/${post.id}`)
