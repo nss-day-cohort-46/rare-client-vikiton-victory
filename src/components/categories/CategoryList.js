@@ -36,7 +36,7 @@ export const CategoryList = () => {
             <div className="category__label">
               Name of the category: {category.label}
             </div>
-            <button
+            <button className="editCatButton"
         onClick={() => {
           history.push(`/categories/edit/${category.id}`);
         }}

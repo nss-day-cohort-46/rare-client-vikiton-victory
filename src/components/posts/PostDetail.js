@@ -65,7 +65,7 @@ export const PostDetail = () => {
                         <section key={`comment--${comment.id}`} className="comment">
                             <div className="comment__content">
                                 {comment.content} 
-                                <button className="button">edit</button>
+                                <button className="button">Edit</button>
                                 <button className="button">X</button>
                             </div>
                         </section>
@@ -78,7 +78,7 @@ export const PostDetail = () => {
                 <button className="button" onClick={() => {
                     history.push(`/posts/edit/${post.id}`)
                 }}>Edit</button>
-                <button className="button" onClick={handleDelete} >Delete</button>
+                <button className="button" onClick={handleDelete}>Delete</button>
                 <button className="button" onClick={() => history.push("/posts")}>Back</button>
             </div>
             <div className="commentButtonDiv">

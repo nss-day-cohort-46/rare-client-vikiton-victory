@@ -32,10 +32,15 @@ const handleAddTag = (event) => {
 return (
   <>
     <section className="singleTag">
+      <article className="tagsArticle">
         <h3 className="tag__title">
           {tag.label}
         </h3>
         <button className="button" value={tag.id} onClick={handleAddTag}>Add to Post</button>
+      </article>
+      <article className="addedTagsArticle">
+        
+      </article>
     </section>
   </>
 )

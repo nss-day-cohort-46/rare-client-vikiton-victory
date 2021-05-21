@@ -4,6 +4,8 @@ import { TagContext } from "./TagsProvider"
 import Tag from "./Tag"
 import "./Tag.css"
 
+// Handles adding tags to an individual post.
+
 export const TagList = () => {
     const { getTags, tags} = useContext(TagContext)
     const { postId } = useParams()
