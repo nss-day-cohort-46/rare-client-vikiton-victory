@@ -8,11 +8,8 @@ import { TagContext } from "../tags/TagsProvider"
 export const PostDetail = () => {
 
     const { deletePost, getPostById } = useContext(PostContext)
-<<<<<<< HEAD
     const { tags } = useContext(TagContext)
-=======
     const {deleteComment} = useContext(CommentContext)
->>>>>>> main
 
     const [post, setPost] = useState({})
 
