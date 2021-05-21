@@ -17,6 +17,7 @@ export const CommentProvider = (props) => {
     }
 
     const addComment = commentObj => {
+        // debugger
         return fetch ("http://localhost:8000/comments", {
             method: "POST",
             headers: {

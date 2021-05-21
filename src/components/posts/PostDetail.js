@@ -55,16 +55,23 @@ export const PostDetail = () => {
                         return <div key={tag.id}>{tag.label}</div>
                     })
                 }
+                <h4 className="postComment">Comments:</h4>
                 <div className="post__comment">
             {post.comment_set?.map((comment) => {
                 return (
                     <div className="individual comment">
                         <section key={`comment--${comment.id}`} className="comment">
                             <div className="comment__content">
-                                Comment: {comment.content} 
-                                <button>edit</button>
-                                <button>X</button>
+                                {comment.content} 
                             </div>
+                            <div className="comment__date">
+                                <small>Reviewed on: {comment.created_on} </small>
+                            </div>
+                            <div className="comment__author">
+                                <small> By: {comment.author?.first_name} </small>
+                            </div>
+                                <button className="button"><small>edit</small></button>
+                                <button className="button">X</button>
                         </section>
                     </div>
                 )

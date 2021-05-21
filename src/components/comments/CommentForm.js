@@ -20,6 +20,7 @@ export const CommentForm = () => {
     const history = useHistory()
 
     const handleControlledInputChange = (event) => {
+        console.log(comment, "comment")
         const newComment = { ...comment }
         newComment[event.target.id] = event.target.value
         newComment.created_on = new Date().toISOString()
@@ -31,6 +32,7 @@ export const CommentForm = () => {
 
             if (commentId) {
                 editComment({
+                    id: parseInt(commentId),
                     subject:comment.subject,
                     content: comment.content,
                     created_on: comment.created_on,
