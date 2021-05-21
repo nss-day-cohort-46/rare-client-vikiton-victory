@@ -1,0 +1,15 @@
+.profileList {
+    margin: 0 0 0 15px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.profile {
+    border: black solid 2px;
+    padding: 25px;
+    width: 22%;
+    height: auto;
+    margin-bottom: 16px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.543);
+}

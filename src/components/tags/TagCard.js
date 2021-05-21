@@ -4,6 +4,7 @@ import {TagContext} from "./TagsProvider"
 import { PostContext } from "../posts/PostProvider"
 import "./Tag.css"
 
+// Tags in the main tag list, handles crud
 
 export const TagCard = ({ tag }) => {
 

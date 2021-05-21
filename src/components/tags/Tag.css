@@ -5,3 +5,9 @@
 .tagSection {
     margin: 0 0 0 12px;
 }
+
+.tagForm {
+    margin: 0 22px 0 12px;
+    border: 2px black solid;
+    padding: 0 4px 20px 26px;
+}

@@ -4,6 +4,8 @@ import { TagContext } from "./TagsProvider"
 import { TagCard } from "./TagCard"
 import "./Tag.css"
 
+// Handles crud on the main list of tags.
+
 export const TagManagement = () => {
     const { getTags, tags} = useContext(TagContext)
 

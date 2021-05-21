@@ -72,7 +72,7 @@ export const TagForm = (props) => {
               </div>
           </fieldset>
 
-          <button className="btn btn-primary"
+          <button className="button"
               disabled={isLoading}
               onClick={event => {
                   event.preventDefault()

@@ -20,7 +20,7 @@
     width: 150px;
     border-radius: 20px;
     margin: 12px 0 8px 0;
-    box-shadow: 2px 3px rgba(0, 0, 0, 0.776);
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.776);
 }
 
 .postImageDiv {
@@ -45,6 +45,12 @@
 
 .postFormSection {
     margin: 0 0 0 15px;
+}
+
+.postForm {
+    margin: 0 22px 0 12px;
+    border: 2px black solid;
+    padding: 0 4px 20px 26px;
 }
 
 .postDetail {
