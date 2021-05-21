@@ -8,7 +8,7 @@
 .singlePost {
     border: 1px solid black;
     margin: 15px 10px 0 10px;
-    padding: 5px 0 20px 3px;
+    padding: 5px 5px 20px 5px;
     width: 200px;
 }
 
@@ -48,15 +48,25 @@
 }
 
 .postDetail {
-    margin: 0 0 0 10px;
+    margin: 0 0 0 37px;
 }
 
 .postCategory {
-    margin: 0 0 20px 0;
+    margin: 0 0 5px 0;
+}
+
+.tagDiv {
+    display: flex;
+    align-items: baseline;
+    margin: 0 0 5px 0;
 }
 
 .postTitle {
     text-decoration: underline;
+}
+
+.postTag {
+    margin: 0 5px 0 0;
 }
 
 .commentButton {

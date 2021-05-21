@@ -41,7 +41,7 @@ export const PostDetail = () => {
     
     return (
         <section className="postDetail">
-                <h3 className="postTitle">{post.title}</h3>
+                <h2 className="postTitle">{post.title}</h2>
                 <div className="postImageDetailDiv">
                     <img className="postImage" src={post.image_url} alt="postImage"></img>
                 </div>
@@ -49,21 +49,24 @@ export const PostDetail = () => {
                 <div className="postContent">Content: {post.content}</div>
                 <div className="postAuthor">Author: {post.user?.first_name} {post.user?.last_name}</div>
                 <div className="postCategory">Category: {post.category?.label}</div>
-                <h4 className="postTitle">Tags:</h4>
-                {
-                    post.tags?.map(tag => {
-                        return <div key={tag.id}>{tag.label}</div>
-                    })
-                }
+                <div className="tagDiv">
+                    <h4 className="postTag">Tags: </h4>
+                    {
+                        post.tags?.map(tag => {
+                            return <div className="postTag" key={tag.id}>{tag.label},</div>
+                        })
+                    }
+                    </div>
+                <h4>Comments: </h4>
                 <div className="post__comment">
-            {post.comment_set?.map((comment) => {
-                return (
-                    <div className="individual comment">
+                {post.comment_set?.map((comment) => {
+                    return (
+                    <div className="individual_comment">
                         <section key={`comment--${comment.id}`} className="comment">
                             <div className="comment__content">
-                                Comment: {comment.content} 
-                                <button>edit</button>
-                                <button>X</button>
+                                {comment.content} 
+                                <button className="button">edit</button>
+                                <button className="button">X</button>
                             </div>
                         </section>
                     </div>

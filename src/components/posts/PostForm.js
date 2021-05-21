@@ -11,7 +11,6 @@ export const PostForm = () => {
     const { categories, getCategories } = useContext(CategoryContext)
     const { tags, getTags } = useContext(TagContext)
     const currentUser = localStorage.getItem("rare_user_id")
-    console.log(tags)
 
     const [ post, setPost ] = useState({
         user_id: parseInt(currentUser),
@@ -132,27 +131,6 @@ export const PostForm = () => {
                         </select>
                     </div>
                 </fieldset>
-                { postId ?
-                <fieldset>
-                    <div>
-                        <label htmlFor="tag"></label>
-                        <select value={post.tags.id} id="tag"
-                            placeholder="Select a Tag"
-                            className="formControl"
-                            onChange={handleControlledInputChange}>
-                            <option value="0">Select a Tag</option>
-                            {
-                                tags.map(tag => (
-                                    <option key={tag.id} value={tag.id}>
-                                        {tag.label}
-                                    </option>
-                            ))}
-                        </select>
-                    </div>
-                </fieldset>
-                :
-                <div></div>
-                }
                 <fieldset>
                     <label htmlFor="image_url">Image Link: </label>
                     <input type="text" id="image_url" required autoFocus

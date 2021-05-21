@@ -1,8 +1,8 @@
 import React, {useContext, useEffect} from "react"
 import {CategoryContext} from "../categories/CategoryProvider"
 import {CategoryCard} from "../categories/Category"
-import "../categories/Category.css"
 import { useHistory } from "react-router-dom"
+import "../categories/Category.css"
 
 export const CategoryList = () => {
   
@@ -17,13 +17,11 @@ export const CategoryList = () => {
       getCategories()
 
     },[]);
-
-  console.log(categories)
   
     return (
       <article className="categoryHolder">
     <button
-        className="btn btn-2 btn-sep icon-create"
+        className="button"
         onClick={() => {
           history.push({ pathname: "/categories/new" });
         }}
