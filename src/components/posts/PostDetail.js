@@ -3,10 +3,12 @@ import { PostContext } from "./PostProvider"
 import { CommentContext } from "../comments/CommentProvider"
 import { useHistory, useParams } from "react-router-dom"
 import "./Posts.css"
+import { TagContext } from "../tags/TagsProvider"
 
 export const PostDetail = () => {
 
     const { deletePost, getPostById } = useContext(PostContext)
+    const { tags } = useContext(TagContext)
     const {deleteComment} = useContext(CommentContext)
 
     const [post, setPost] = useState({})
@@ -47,6 +49,12 @@ export const PostDetail = () => {
                 <div className="postContent">Content: {post.content}</div>
                 <div className="postAuthor">Author: {post.user?.first_name} {post.user?.last_name}</div>
                 <div className="postCategory">Category: {post.category?.label}</div>
+                <h4 className="postTitle">Tags:</h4>
+                {
+                    post.tags?.map(tag => {
+                        return <div key={tag.id}>{tag.label}</div>
+                    })
+                }
                 <div className="post__comment">
             {post.comment_set?.map((comment) => {
                 return (
@@ -72,6 +80,7 @@ export const PostDetail = () => {
             </div>
             <div className="commentButtonDiv">
                 <button className="button commentButton" onClick={() => history.push(`/posts/${post.id}/createcomment`)}>Comment</button>
+                <button className="button" onClick={() => history.push(`/tags/${post.id}`)}>Tag Management</button>
             </div>
         </section>
     )

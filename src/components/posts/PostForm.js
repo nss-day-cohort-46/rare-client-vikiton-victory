@@ -2,13 +2,16 @@ import React, { useState, useContext, useEffect } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { PostContext } from "./PostProvider"
 import { CategoryContext } from "../categories/CategoryProvider"
+import { TagContext } from "../tags/TagsProvider"
 import "./Posts.css"
 
 export const PostForm = () => {
 
     const { addPost, getPostById, updatePost } = useContext(PostContext)
     const { categories, getCategories } = useContext(CategoryContext)
+    const { tags, getTags } = useContext(TagContext)
     const currentUser = localStorage.getItem("rare_user_id")
+    console.log(tags)
 
     const [ post, setPost ] = useState({
         user_id: parseInt(currentUser),
@@ -16,7 +19,8 @@ export const PostForm = () => {
         title: "",
         image_url: "",
         content: "",
-        approved: true
+        approved: true,
+        tags: ""
     })
 
     const [ isLoading, setIsLoading ] = useState(true)
@@ -26,6 +30,7 @@ export const PostForm = () => {
     
     useEffect(() => {
         getCategories()
+            .then(getTags)
     }, [])
 
     const handleControlledInputChange = (event) => {
@@ -48,7 +53,8 @@ export const PostForm = () => {
                     title: post.title,
                     image_url: post.image_url,
                     content: post.content,
-                    approved: post.approved
+                    approved: post.approved,
+                    tags: post.tags
                 })
                     .then(() => history.push(`/posts/detail/${post.id}`))
             } else {
@@ -58,7 +64,8 @@ export const PostForm = () => {
                         title: post.title,
                         image_url: post.image_url,
                         content: post.content,
-                        approved: post.approved
+                        approved: post.approved,
+                        tags: post.tags
                     })
                     .then(() => history.push("/posts"))
             }
@@ -78,7 +85,8 @@ export const PostForm = () => {
                         title: post.title,
                         image_url: post.image_url,
                         content: post.content,
-                        approved: post.approved
+                        approved: post.approved,
+                        tags: parseInt(post.tags.id)
                     })
                     setIsLoading(false)
                 })
@@ -114,7 +122,7 @@ export const PostForm = () => {
                             placeholder="Select a Category"
                             className="formControl"
                             onChange={handleControlledInputChange}>
-                            <option value="0">Select a category</option>
+                            <option value="0">Select a Category</option>
                             {
                                 categories.map(cat => (
                                     <option key={cat.id} value={cat.id}>
@@ -124,6 +132,27 @@ export const PostForm = () => {
                         </select>
                     </div>
                 </fieldset>
+                { postId ?
+                <fieldset>
+                    <div>
+                        <label htmlFor="tag"></label>
+                        <select value={post.tags.id} id="tag"
+                            placeholder="Select a Tag"
+                            className="formControl"
+                            onChange={handleControlledInputChange}>
+                            <option value="0">Select a Tag</option>
+                            {
+                                tags.map(tag => (
+                                    <option key={tag.id} value={tag.id}>
+                                        {tag.label}
+                                    </option>
+                            ))}
+                        </select>
+                    </div>
+                </fieldset>
+                :
+                <div></div>
+                }
                 <fieldset>
                     <label htmlFor="image_url">Image Link: </label>
                     <input type="text" id="image_url" required autoFocus

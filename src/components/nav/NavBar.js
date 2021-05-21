@@ -14,7 +14,6 @@ export const NavBar = () => {
     }, [])
 
     const isAdmin = JSON.parse(localStorage.getItem("admin"))
-    console.log(isAdmin)
     return (
         <ul className="navbar">
             <li className="navbar__item">
