@@ -1,0 +1,13 @@
+.title{
+    text-align: center;
+    position: relative;
+    margin: auto auto 100px auto;
+    font-size: 50pt;
+
+}
+
+.homeImage{
+  position: relative;
+  width:auto;
+  height: auto;
+}
