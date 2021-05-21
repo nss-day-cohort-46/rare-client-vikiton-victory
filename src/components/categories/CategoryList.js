@@ -43,7 +43,7 @@ export const CategoryList = () => {
       >
         Edit
       </button>
-      <button
+      <button className="deleteButtonClass"
         onClick={() =>
           deleteCategory(category.id).then(() => history.push("/categories"))
         }
@@ -54,7 +54,7 @@ export const CategoryList = () => {
           </div>
         );
       })}</article>
- .
+ 
      </article>
     )
   }

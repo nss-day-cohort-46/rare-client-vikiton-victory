@@ -9,3 +9,10 @@
 .category__label {
     margin: 0 0 5px 0;
 }
+
+.editCatButton {
+    margin-left :5px
+}
+.deleteButtonClass {
+    margin-left :10px
+}
