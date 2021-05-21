@@ -3,11 +3,12 @@ import { CommentContext } from "./CommentProvider";
 import { useHistory, useParams } from "react-router-dom"
 
 export const CommentForm = () => {
-    const {addComment, editComment, getCommentByPostId } = useContext(CommentContext)
-    const { commentId, postId } = useParams()
+    
+    const {addComment, editComment, getCommentById } = useContext(CommentContext)
+    const { postId, commentId } = useParams()
     
     const [comment, setComment] = useState({
-        subject: "",
+        subject:"",
         content: "",
         created_on: new Date().toISOString(),
         post_id: +postId,
@@ -25,31 +26,27 @@ export const CommentForm = () => {
         setComment(newComment)
     }
 
-    const handleSaveComment = () => {
-        if (comment.subject === "") {
-            window.alert("Please enter a comment")
-        } else {
-            setIsLoading(true);
+    const handleSaveComment = (postId) => {
+            setIsLoading();
 
             if (commentId) {
                 editComment({
-                    subject: comment.subject,
+                    subject:comment.subject,
                     content: comment.content,
                     created_on: comment.created_on,
                     post_id: comment.post_id,
                     author_id: localStorage.getItem("rare_user_id")
                 })
-                    .then(() => history.push("/comments"))
+                    .then(() => history.push(`/posts/detail/${postId}`))
             } else {
-                  addComment(comment)
-                    .then(() => history.push("/comments"))
+                addComment(comment)
+                    .then(() => history.push(`/posts/detail/${postId}`))
             }
         }
-    }
 
     useEffect(() => {
         if(commentId) {
-            getCommentByPostId(commentId)
+            getCommentById(commentId)
                 .then(comment => {
                     setComment(comment)
                     setIsLoading(false)
@@ -62,14 +59,10 @@ export const CommentForm = () => {
     return (
         <form className="commentForm">
             <h2 className="comment_form">{commentId ? "Edit Comment" : "Add Comment"}</h2>
-            {/* <fieldset>
-                <div className="form-group">
-                    <label htmlFor="subject">Subject</label>
-                    <textarea type="text" id="subject" required autoFocus className="form-control" onChange={handleControlledInputChange} defaultValue={comment.subject} />
-                </div>
-            </fieldset> */}
             <fieldset>
                 <div className="form-group">
+                    <label htmlFor="subject">Subject</label>  
+                    <textarea type="text" id="subject" required autoFocus className="form-control" onChange={handleControlledInputChange} defaultValue={comment.subject} />
                     <label htmlFor="content">Content</label>  
                     <textarea type="text" id="content" required autoFocus className="form-control" onChange={handleControlledInputChange} defaultValue={comment.content} />
                 </div>
@@ -78,7 +71,7 @@ export const CommentForm = () => {
             <button className="btn btn-primary"
                 onClick={event => {
                     event.preventDefault()
-                    handleSaveComment()
+                    handleSaveComment(comment.post_id)
                 }}>
                     {commentId ? "Save Comment" : "Add Comment"}
             </button>
