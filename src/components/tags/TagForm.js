@@ -14,7 +14,7 @@ export const TagForm = (props) => {
     
     const[isLoading, setIsLoading] = useState(true)
     
-    const { tagId } = useParams();
+    const { tagId, postId } = useParams();
     const history = useHistory();
 
     const handleControlledInputChange = (event) => {
@@ -43,7 +43,7 @@ export const TagForm = (props) => {
             id: tag.id,
             label: tag.label
           })
-          .then(() => history.push("/tags"))
+          .then(() => history.push("/tags/postId"))
         }
       }
     }
