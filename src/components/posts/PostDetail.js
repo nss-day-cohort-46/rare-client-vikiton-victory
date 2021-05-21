@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react"
 import { PostContext } from "./PostProvider"
+import { CommentContext } from "../comments/CommentProvider"
 import { useHistory, useParams } from "react-router-dom"
 import "./Posts.css"
 
 export const PostDetail = () => {
 
     const { deletePost, getPostById } = useContext(PostContext)
+    const {deleteComment} = useContext(CommentContext)
 
     const [post, setPost] = useState({})
 
@@ -15,6 +17,14 @@ export const PostDetail = () => {
 
     const handleDelete = () => {
         deletePost(post.id)
+        .then(() => {
+            history.push("/posts")
+        })
+    }
+
+
+    const handleDeleteComment = () => {
+        deleteComment(post.comment_set.id)
         .then(() => {
             history.push("/posts")
         })
@@ -43,7 +53,9 @@ export const PostDetail = () => {
                     <div className="individual comment">
                         <section key={`comment--${comment.id}`} className="comment">
                             <div className="comment__content">
-                                Comment: {comment.content}
+                                Comment: {comment.content} 
+                                <button>edit</button>
+                                <button>X</button>
                             </div>
                         </section>
                     </div>

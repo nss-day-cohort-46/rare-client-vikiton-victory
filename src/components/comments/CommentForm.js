@@ -8,6 +8,7 @@ export const CommentForm = () => {
     const { postId, commentId } = useParams()
     
     const [comment, setComment] = useState({
+        subject:"",
         content: "",
         created_on: new Date().toISOString(),
         post_id: +postId,
@@ -30,6 +31,7 @@ export const CommentForm = () => {
 
             if (commentId) {
                 editComment({
+                    subject:comment.subject,
                     content: comment.content,
                     created_on: comment.created_on,
                     post_id: comment.post_id,
@@ -59,6 +61,8 @@ export const CommentForm = () => {
             <h2 className="comment_form">{commentId ? "Edit Comment" : "Add Comment"}</h2>
             <fieldset>
                 <div className="form-group">
+                    <label htmlFor="subject">Subject</label>  
+                    <textarea type="text" id="subject" required autoFocus className="form-control" onChange={handleControlledInputChange} defaultValue={comment.subject} />
                     <label htmlFor="content">Content</label>  
                     <textarea type="text" id="content" required autoFocus className="form-control" onChange={handleControlledInputChange} defaultValue={comment.content} />
                 </div>
