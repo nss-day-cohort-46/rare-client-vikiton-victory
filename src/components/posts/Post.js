@@ -17,7 +17,6 @@ export const Post = ({ post }) => (
         <div className="post__category">{post.category.label}</div>
         <div className="post__author">Author: {post.user?.first_name} {post.user?.last_name}</div>
         <div className="post__comment">
-            {console.log("post", post)}
             {post.comment_set?.map((comment) => {
                 return (
                     <div className="individualcomment">
