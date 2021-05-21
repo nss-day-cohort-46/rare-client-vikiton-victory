@@ -9,12 +9,27 @@ export const Post = ({ post }) => (
         </div>
         <h3 className="post__title">
             <Link to={`/posts/detail/${post.id}`}>
-                { post.title }
+                {post.title}
             </Link>
         </h3>
-        <div className="post__publication_date">{ post.publication_date }</div>
-        <div className="post__content">{ post.content }</div>
-        <div className="post__category">{ post.category.label }</div>
-        <div className="post__author">Author: { post.user?.first_name } { post.user?.last_name}</div>
+        <div className="post__publication_date">{post.publication_date}</div>
+        <div className="post__content">{post.content}</div>
+        <div className="post__category">{post.category.label}</div>
+        <div className="post__author">Author: {post.user?.first_name} {post.user?.last_name}</div>
+        <div className="post__comment">
+            {console.log("post", post)}
+            {post.comment_set?.map((comment) => {
+                return (
+                    <div className="individualcomment">
+                        <section key={`comment--${comment.id}`} className="comment">
+                            <div className="comment__content">
+                                Comment: {comment.content}
+                            </div>
+                        </section>
+                    </div>
+                )
+            })
+            }
+        </div>
     </section>
 )
