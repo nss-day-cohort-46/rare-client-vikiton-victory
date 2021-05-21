@@ -8,7 +8,19 @@
 
 .homeImage{
   position: relative;
-  width:100%;
-  height: 100%;
+  width: 60%;
+  height: 60%;
+  margin-left: auto;
+  display: block;
+  margin-right: auto;
 }
+
+.welcomeUser{
+  position: absolute;
+  font-size: 60px;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
