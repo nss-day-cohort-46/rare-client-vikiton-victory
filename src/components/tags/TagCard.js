@@ -5,28 +5,19 @@ import { PostContext } from "../posts/PostProvider"
 import "./Tag.css"
 
 
-export default ({ tag }) => {
+export const TagCard = ({ tag }) => {
 
 const history = useHistory()
 const { postId } = useParams()
 
 const { deleteTag } = useContext(TagContext)
-const { getPostById, updatePostTags } = useContext(PostContext)
-const [post, setPost] = useState()
 
 let tagsArray = []
 
-useEffect(() => {
-  getPostById(postId)
-    .then(res => {
-      setPost(res)
-    })
-}, [])
+const handleDeleteTag = () => {
+  console.log("click")
+  deleteTag(tag.id)
 
-const handleAddTag = (event) => {
-  const newTag = parseInt(event.target.value)
-  tagsArray.push(newTag)
-  updatePostTags(post, newTag)
 }
 
 return (
@@ -35,7 +26,8 @@ return (
         <h3 className="tag__title">
           {tag.label}
         </h3>
-        <button className="button" value={tag.id} onClick={handleAddTag}>Add to Post</button>
+        <button className="button" onClick={() => {history.push(`/tags/edit/${tag.id}`)}}>Edit</button>
+        <button className="button" onClick={handleDeleteTag}>Delete</button>
     </section>
   </>
 )

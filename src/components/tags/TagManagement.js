@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from "react"
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { TagContext } from "./TagsProvider"
-import Tag from "./Tag"
+import { TagCard } from "./TagCard"
 import "./Tag.css"
 
-export const TagList = () => {
+export const TagManagement = () => {
     const { getTags, tags} = useContext(TagContext)
-    const { postId } = useParams()
 
     const [ filteredTags, setFilteredTags] = useState([])
 
@@ -24,16 +23,10 @@ export const TagList = () => {
                 </div>
                 <div className="tags">
                     {
-                        tags.map(tag => <Tag key={tag.id} tag={tag} />)
+                        tags.map(tag => <TagCard key={tag.id} tag={tag} />)
                     }
                 </div>
-                <button className="button" id="saveTagButton" onClick={() => history.push(`/posts/detail/${postId}`)}>Save Tags</button>
             </section>
         </>
     )
 }
-
-
-
-
-
