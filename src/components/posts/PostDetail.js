@@ -39,9 +39,10 @@ export const PostDetail = () => {
                 <div className="postContent">Content: {post.content}</div>
                 <div className="postAuthor">Author: {post.user?.first_name} {post.user?.last_name}</div>
                 <div className="postCategory">Category: {post.category?.label}</div>
+                <h4 className="postTitle">Tags:</h4>
                 {
                     post.tags?.map(tag => {
-                        return <div>Tags: {tag.label}</div>
+                        return <div>{tag.label}</div>
                     })
                 }
             <div className="postDetailButtonDiv">
