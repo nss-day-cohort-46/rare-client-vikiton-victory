@@ -23,7 +23,7 @@ export const TagList = () => {
     return (
         <>
             <section className="tagSection">
-                <div className="createTagButtonDiv" onClick={() => history.push("tags/create")}>
+                <div className="createTagButtonDiv" onClick={() => history.push("/tags/create")}>
                     <button className="button createTagButton">Create a Tag</button>
                 </div>
                 <div className="tags">
