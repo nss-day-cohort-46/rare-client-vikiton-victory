@@ -42,7 +42,7 @@ export const PostDetail = () => {
                 <h4 className="postTitle">Tags:</h4>
                 {
                     post.tags?.map(tag => {
-                        return <div>{tag.label}</div>
+                        return <div key={tag.id}>{tag.label}</div>
                     })
                 }
             <div className="postDetailButtonDiv">

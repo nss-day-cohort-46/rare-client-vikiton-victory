@@ -33,8 +33,6 @@ const handleAddTag = (event) => {
   const newTag = parseInt(event.target.value)
   tagsArray.push(newTag)
   updatePostTags(post, newTag)
-
-  console.log(tagsArray)
 }
 
 return (
@@ -47,8 +45,6 @@ return (
         <button className="button" onClick={handleDeleteTag}>Delete</button>
         <button className="button" value={tag.id} onClick={handleAddTag}>Add to Post</button>
     </section>
-        <button className="button" onClick={handleAddTag}>Save Tags</button>
-
   </>
 )
 }

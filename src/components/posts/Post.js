@@ -16,6 +16,5 @@ export const Post = ({ post }) => (
         <div className="post__content">{ post.content }</div>
         <div className="post__category">{ post.category.label }</div>
         <div className="post__author">Author: { post.user?.first_name } { post.user?.last_name}</div>
-        <div className="post__tag">Tag: { post.tags.label }</div>
     </section>
 )
