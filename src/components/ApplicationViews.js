@@ -18,6 +18,7 @@ import { CommentForm } from "./comments/CommentForm";
 import { CommentDetail } from "./comments/CommentDetail";
 import { ProfileList } from "./profiles/ProfileList"
 import { ProfileProvider } from "./profiles/ProfileProvider"
+import HomePage from "./HomePage";
 
 export const ApplicationViews = () => {
   return (
@@ -77,6 +78,9 @@ export const ApplicationViews = () => {
               </Route>
               <Route exact path="/comments">
                 <CommentList />
+              </Route>
+              <Route exact path="/">
+                <HomePage/>
               </Route>
 
               <Route exact path="/posts/:postId(\d+)/createcomment">
