@@ -43,7 +43,7 @@ export const TagForm = (props) => {
             id: tag.id,
             label: tag.label
           })
-          .then(() => history.push("/tags/postId"))
+          .then(() => history.push(`/tags/${postId}`))
         }
       }
     }
